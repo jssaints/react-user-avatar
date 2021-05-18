@@ -35,10 +35,14 @@ class UserAvatar extends React.Component {
       size,
       style,
       onClick,
-      className
+      className,
+      id
     } = this.props;
 
-    if (!name) throw new Error('UserAvatar requires a name');
+    if (!name) {
+      name = "";
+    }  
+    /* throw new Error('UserAvatar requires a name'); */
 
     const abbr = initials(name);
     size = addPx(size);
@@ -67,8 +71,12 @@ class UserAvatar extends React.Component {
       if (color) {
         background = color;
       } else {
+        let fullName = name;
+        if (id !== undefined) {
+          fullName += id;
+        }
         // pick a deterministic color from the list
-        let i = sumChars(name) % colors.length;
+        let i = sumChars(fullName) % colors.length;
         background = colors[i];
       }
 
@@ -82,8 +90,8 @@ class UserAvatar extends React.Component {
     }
 
     return (
-      <div aria-label={name} className={classes.join(' ')} style={style}>
-        <div className="UserAvatar--inner" style={innerStyle}>
+      <div aria-label={name} className={classes.join(' ')} style={style} title={name}>
+        <div className="UserAvatar--inner projkey" style={innerStyle}>
           {inner}
         </div>
       </div>
