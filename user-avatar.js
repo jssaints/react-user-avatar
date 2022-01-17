@@ -22,6 +22,8 @@ var defaultColors = ['#2ecc71', // emerald
 '#1abc9c', // turquoise
 '#2c3e50'];
 
+var defaultLength = 2;
+
 function sumChars(str) {
   var sum = 0;
   for (var i = 0; i < str.length; i++) {
@@ -53,6 +55,7 @@ var UserAvatar = function (_React$Component) {
           _props$colors = _props.colors,
           colors = _props$colors === undefined ? defaultColors : _props$colors,
           size = _props.size,
+          length = _props.length,
           style = _props.style,
           onClick = _props.onClick,
           className = _props.className,
@@ -61,10 +64,10 @@ var UserAvatar = function (_React$Component) {
 
       if (!name) {
         name = "";
-      } 
-      /* throw new Error('UserAvatar requires a name') */;
+      }
+      /* throw new Error('UserAvatar requires a name'); */
 
-      var abbr = initials(name);
+      var abbr = initials(name, { length: length ? length : defaultLength });
       size = addPx(size);
 
       var imageStyle = {

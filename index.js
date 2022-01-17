@@ -14,6 +14,8 @@ const defaultColors = [
   '#2c3e50', // midnight blue
 ];
 
+const defaultLength = 2;
+
 function sumChars(str) {
   let sum = 0;
   for(let i = 0; i < str.length; i++) {
@@ -33,6 +35,7 @@ class UserAvatar extends React.Component {
       color,
       colors=defaultColors,
       size,
+      length,
       style,
       onClick,
       className,
@@ -44,7 +47,7 @@ class UserAvatar extends React.Component {
     }  
     /* throw new Error('UserAvatar requires a name'); */
 
-    const abbr = initials(name);
+    const abbr = initials(name, { length: (length) ? length : defaultLength});
     size = addPx(size);
 
     const imageStyle = {
