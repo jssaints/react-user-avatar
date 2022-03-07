@@ -51,6 +51,7 @@ var UserAvatar = function (_React$Component) {
           src = _props.src,
           srcset = _props.srcset,
           name = _props.name,
+          title = _props.title,
           color = _props.color,
           _props$colors = _props.colors,
           colors = _props$colors === undefined ? defaultColors : _props$colors,
@@ -112,10 +113,11 @@ var UserAvatar = function (_React$Component) {
       if (innerStyle.backgroundColor) {
         classes.push('UserAvatar--' + contrast(innerStyle.backgroundColor));
       }
+      var tooltip = title || name;
 
       return React.createElement(
         'div',
-        { 'aria-label': name, className: classes.join(' '), style: style, title: name },
+        { 'aria-label': name, className: classes.join(' '), style: style, title: tooltip },
         React.createElement(
           'div',
           { className: 'UserAvatar--inner projkey', style: innerStyle },

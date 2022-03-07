@@ -32,6 +32,7 @@ class UserAvatar extends React.Component {
       src,
       srcset,
       name,
+      title,
       color,
       colors=defaultColors,
       size,
@@ -91,9 +92,10 @@ class UserAvatar extends React.Component {
     if (innerStyle.backgroundColor) {
       classes.push(`UserAvatar--${contrast(innerStyle.backgroundColor)}`);
     }
+    const tooltip = title || name;
 
     return (
-      <div aria-label={name} className={classes.join(' ')} style={style} title={name}>
+      <div aria-label={name} className={classes.join(' ')} style={style} title={tooltip}>
         <div className="UserAvatar--inner projkey" style={innerStyle}>
           {inner}
         </div>
